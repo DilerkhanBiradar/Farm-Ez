@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Filters</title>
+
+    <!-- Add noUiSlider CSS and JS files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .filter-menu {
+            width: 200px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .filter-options {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .noUi-target {
+            width: 100%;
+        }
+
+        #price-display {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Add more styles for your product list or grid here */
+    </style>
+</head>
+<body>
+
+    <div class="filter-menu">
+        <div class="filter-group">
+            <label>Price Range</label>
+            <div id="price-slider"></div>
+            <div id="price-display">$0 - $100</div>
+        </div>
+
+        <div class="filter-group">
+            <label>Brands</label>
+            <ul class="filter-options">
+                <li><input type="checkbox" id="brand-nike"> <label for="brand-nike">Nike</label></li>
+                <li><input type="checkbox" id="brand-adidas"> <label for="brand-adidas">Adidas</label></li>
+                <li><input type="checkbox" id="brand-puma"> <label for="brand-puma">Puma</label></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // Initialize the price range slider
+        var priceSlider = document.getElementById('price-slider');
+        var priceDisplay = document.getElementById('price-display');
+
+        noUiSlider.create(priceSlider, {
+            start: [0, 100], // Initial values for the range
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            }
+        });
+
+        // Add event listener for changing the price range
+        priceSlider.noUiSlider.on('update', function (values, handle) {
+            // Display the selected range
+            priceDisplay.innerHTML = '$' + values[0] + ' - $' + values[1];
+            // You can use the values to update the displayed range or perform other actions
+        });
+    </script>
+
+</body>
+</html>

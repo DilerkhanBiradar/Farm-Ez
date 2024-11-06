@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Farm-Ez products</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="product1.css">
+    <!-- Favicon -->
+    <link href="img/logo.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Add some basic styling for better presentation 
+        #searchResults {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }*/
+
+        /* Style the microphone icon */
+        .microphone-icon {
+            position: relative;
+            top: -6px;
+            left: -5px;
+            cursor: pointer;
+            color: #000000; /* Set the color as needed */
+            width: 23px;
+            height: 23px;
+            opacity: 0.7;
+        }
+        .cart{
+            font-size: 30px;
+            color: #ffffff;
+            opacity: 1;
+            padding: 10px;
+        }
+        .cart:hover{
+            color: #ffffff;
+        }
+       
+        /* Style for the modal */
+        #voiceModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color:transparent;
+            box-shadow: 0 0 10px rgba(225, 220, 220, 0.1);
+            z-index: 1000;
+            border-radius: 10px;
+        }
+        .search button{
+            position: relative;
+            left: -20px;
+        }
+
+        .fa-shopping-cart{
+            position: relative;
+            top: 10px;
+            height: 35px;
+            width: 35px;
+            color: #000000;
+            opacity: 0.7;
+        }
+
+        #searchInput{
+           position: relative;
+           left: 100px;
+        }
+        /* Animation for hearing tunes */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .hearing-tunes {
+            animation: pulse 1s infinite;
+            font-size: 24px;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #718f7e, #4a7b67);
+            border-radius: 10px;
+            padding:10px;
+        }
+        .logout{
+            position: relative;
+            left: 100px;
+        }
+        .fa-user{
+            color: black;
+            position: relative;
+            left: 100px;
+            scale: 0.6;
+            
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid px-5 d-none d-lg-block">
+        <div class="row gx-5 py-3 align-items-center">
+            <div class="col-lg-6">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="index.php" class="navbar-brand ms-lg-5">
+                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><img src="img/Picture2.png" alt="Logo" style="height:120px;width:400px;">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="d-flex align-items-center justify-content-end">
+                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+        <a href="index.php" class="navbar-brand d-flex d-lg-none">
+            <h1 class="m-0 display-4 text-secondary"><span class="text-white"><img src="img/Picture2.png" alt="Logo" style="height:120px;width:400px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+                <a href="index.php" class="nav-item nav-link">Home</a>
+                <a href="product.html" class="nav-item nav-link active">Product</a>
+                <i class="fa fa-shopping-cart"></i>
+                    <a href="#" class="cart">Cart (0)</a>
+                    <!-- ////////////////////////////////////////////////// -->
+                    <div class="search">
+                        <!-- ///////////////////////////////////////////// -->
+    
+                        <!-- <h1>Search Bar Example</h1> -->
+    
+                        <!-- Search Bar -->
+                        <form id="searchForm" onsubmit="openResult(); return false;">
+                            <input type="text" id="searchInput" name="q" placeholder="Search..." oninput="search()">
+                            <!-- Microphone Icon -->
+                            <i class="fas fa-microphone microphone-icon" onclick="startVoiceRecognition()"></i>
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    
+                        <!-- Display Search Results -->
+                        
+                    
+                        <!-- Voice Modal -->
+                        <div id="voiceModal">
+                            <div class="hearing-tunes"><i style='font-size:24px' class='fas'>&#xf3c9;</i>  Listening...</div>
+                        </div>
+                    
+                        <!-- Add Font Awesome CDN script -->
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+                    
+                        <script>
+                            var recognition; // Declare the recognition object globally
+                            var listeningTimer; // Timer for automatic stop after 2 seconds of pause
+                    
+                            function search() {
+                                // Get the search query from the input field
+                                var query = document.getElementById("searchInput").value;
+                    
+                                // Get the container where search results will be displayed
+                                var resultsContainer = document.getElementById("searchResults");
+                    
+                                // Clear previous search results
+                                resultsContainer.innerHTML = "";
+                    
+                                // Perform the search only if the query is not empty
+                                if (query.trim() !== "") {
+                                    // Simulate an AJAX request (replace this with your actual AJAX call)
+                                    // For demonstration purposes, we'll just create a link to the HTML file
+                                    var resultLink = document.createElement("a");
+                                    resultLink.href = query.toLowerCase() + ".html"; // Assuming the HTML file is named based on the search query
+                                    resultLink.textContent = "Open " + query + ".html";
+                    
+                                    // Display the link to the HTML file
+                                    resultsContainer.appendChild(resultLink);
+                                }
+                            }
+                    
+                            function openResult() {
+                                // Get the search query from the input field
+                                var query = document.getElementById("searchInput").value;
+                    
+                                // Open the HTML file based on the search query
+                                window.location.href = query.toLowerCase() + ".html";
+                            }
+                    
+                            function startVoiceRecognition() {
+                                // Show the voice modal
+                                var voiceModal = document.getElementById('voiceModal');
+                                voiceModal.style.display = 'block';
+                    
+                                // Initialize the SpeechRecognition object
+                                recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+                    
+                                // Set the language for recognition
+                                recognition.lang = 'en-US';
+                    
+                                // Start recognition
+                                recognition.start();
+                    
+                                // Event handler for when speech is recognized
+                                recognition.onresult = function (event) {
+                                    var voiceQuery = event.results[0][0].transcript;
+                    
+                                    // Set the voice recognition result to the search input
+                                    document.getElementById("searchInput").value = voiceQuery;
+                    
+                                    // Reset the listening timer
+                                    clearTimeout(listeningTimer);
+                                    // Start the listening timer again
+                                    listeningTimer = setTimeout(stopVoiceRecognition, 2000);
+                    
+                                    // Trigger the search function
+                                    search();
+                                };
+                    
+                                // Event handler for errors
+                                recognition.onerror = function (event) {
+                                    console.error('Speech recognition error:', event.error);
+                                };
+                    
+                                // Event handler for when recognition is ended
+                                recognition.onend = function () {
+                                    console.log('Speech recognition ended.');
+                                };
+                            }
+                    
+                            function stopVoiceRecognition() {
+                                // Stop recognition
+                                if (recognition) {
+                                    recognition.stop();
+                                }
+                    
+                                // Hide the voice modal
+                                var voiceModal = document.getElementById('voiceModal');
+                                voiceModal.style.display = 'none';
+                            }
+                        </script>   
+    
+    
+    
+    
+    
+    
+    
+                        <!-- //////////////////////////////////////////////////////// -->
+                        <div id="voiceModal">
+                            <div class="hearing-tunes">&#128266; Listening...</div>
+                        </div>
+                    </div>
+                    <!-- ////////////////////////////////////////////////// -->
+                    <i class="fa fa-user"></i>
+                <a href="farmer.php" class="nav-item nav-link active logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <div class="pname">
+        <center><b>Orange</b></center>
+    </div>
+    
+        <div class="mainBox">
+           <div class="box1">
+            <img src="img/orange.jpeg" alt="Orange" class="img"><br>
+            <b>Orange</b>
+           </div>
+           <div class="box2">
+            <div class="box2-content">
+                <span><b>Price</b> : 40/KG</span>&emsp;
+                <span><b>Stock</b> : 500 KGS</span>
+                <table>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <input type="number" name="" id="" placeholder="Enter quantity">
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="btn1">Add to cart</button>
+                        </td>
+                        <td>
+                            <button class="btn2">Save for later</button>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <div class="delivery">
+                    <i class="fa fa-truck fa-2x fa-flip-horizontal" aria-hidden="true"></i></i>&emsp;<i><b>Delivery by Farmer</b></i></i>
+                </div>
+                <p class="loc"><i class="fa fa-map-marker" aria-hidden="true"></i>&emsp;<i><b>Dharwad , Karnataka</b></i></p>
+            </div>
+           </div>
+           <div class="box3">
+            <h3>Farmer Details:</h3>
+            <p class="name"><b>Name:Venkappa S</b></p>
+            <p class="phn"><b>Phone Number : +91 1234567890</b></p>
+            <p class="touch">Get in touch with Farmer</p>
+            <p><button class="profile-btn"><a href="farmerProfile.html" class="link">View Profile</a></button></p>
+            <p class="qry">Have Some Query ?</p>
+            <p><button class="chat-btn">Chat Here</button></p>
+           </div>
+        </div>
+
+   
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-footer bg-primary text-white mt-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-8 col-md-6">
+                    <div class="row gx-5">
+                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                            <h4 class="text-white mb-4">Get In Touch</h4>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-white me-2"></i>
+                                <p class="text-white mb-0">SDMCET,Dharwad</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-envelope-open text-white me-2"></i>
+                                <p class="text-white mb-0">Farm-Ez@ymail.com</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-white me-2"></i>
+                                <p class="text-white mb-0">+91 1234 567</p>
+                            </div>
+                            <div class="d-flex mt-4">
+                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-secondary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <div class="d-flex flex-column justify-content-start">
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Home</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>About Us</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Our Services</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Meet The Team</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Latest Blog</a>
+                                <a class="text-white" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="img/logo.png" class="logo" alt="farm-ez">
+            <center><b><h1>Farm-Ez</h1></b></center>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; <a class="text-secondary fw-bold" href="#">Farm-Ez</a>. All Rights Reserved.</a></p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

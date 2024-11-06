@@ -1,0 +1,478 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+.mainBox{
+    width : 801px;
+    height : 300px;
+    border:none;
+    margin-top:15%;
+    margin-left:20%;
+    margin-right: 10px;
+  
+}
+.box1{
+       width: 266px;
+       height:300px;
+       border:none;
+       float:left;
+}
+.box2{
+    width: 266px;
+    height:300px;
+    border:none;
+    float:left;
+   
+}
+.box3{
+    width: 267px;
+    height:300px;
+    border:none;
+    float:right; 
+    background-color: rgb(47, 40, 40);
+}
+.name b{
+    color: black;
+}
+
+.phn b{
+    color: black;
+}
+
+.img{
+    width: 265px;
+    height:296px;
+    padding-bottom: 20px;
+    background-color: white;
+    /* filter: drop-shadow(1px 1px 5px #000000); */
+}
+.img:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+}
+.box1:hover{
+    border-color: green;
+    background-size: contain;
+    transition: 0.5s linear;
+}
+.box2-content{
+    font-size: 16px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.qty-img{
+    width: 55px;
+    height:70px;
+    border: none;
+    border-radius: 13px;
+    background: none;
+}
+.qty-img:hover{
+    color: green;
+    cursor: pointer;
+}
+input{
+    font-weight: bold;
+    border-radius:7px;
+    margin-left: 5px;
+    height: 28px;
+    width:150px;
+    margin-left: 20px;
+    padding: 5px;
+}
+.btn1{
+    width:90px;
+    height:35px;
+    border-radius: 12px;
+    background-color: rgb(87, 150, 101);
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top:20px;
+    border-color: transparent;
+}
+.btn1:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.btn2{
+    width:100px;
+    height:35px;
+    border-radius: 12px;
+    background-color: rgb(87, 150, 101);
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left:40px;
+    margin-top:20px;
+    border-color: transparent;
+}
+.btn2:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.delivery{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    margin-top:20px;
+    margin-left: 20px;
+}
+.del-logo{
+    width:80px;
+    height:60px;
+    border: none;
+}
+.loc{
+    margin-top:20px;
+    margin-left: 16px;
+    padding: 14px;
+}
+h3{
+    margin-left: 70px;
+    margin-top: 15px;
+    color:rgb(2, 50, 6);
+    text-decoration: underline;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.name {
+    color:white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: small;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+.phn{
+    color:white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: small;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.touch{
+    color: orange;
+    font-size: medium;
+    margin-top: 17px;
+    margin-left: 50px;
+}
+.profile-btn{
+    background-color: rgb(87, 150, 101);
+    border-radius: 13px;
+    margin-top: 20px;
+    height: 34px;
+    width: 130px;
+    border: none;
+    font-weight: bold;
+    margin-left: 70px;
+}
+.profile-btn:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.qry{
+    color: orange;
+    font-size: medium;
+    margin-top: 17px;
+    margin-left: 70px;
+}
+.chat-btn{
+    margin-top: 17px;
+    margin-left: 70px;
+    background-color: rgb(87, 150, 101);
+    border-radius: 13px;
+    width: 130px;
+    height: 34px;
+    font-weight: bold;
+    border: none;
+    border-radius: 13px;
+}
+.chat-btn:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+body{
+    background-color: white;
+}
+.link{
+    text-decoration: none;
+    background-color: rgb(87, 150, 101);
+    border-radius: 13px;
+    height: 34px;
+    width: 130px;
+    border: none;
+    font-weight: bold;
+    color: black;
+}
+.link:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.lis{
+    margin-top: 50px;
+    margin-left: 100px; 
+}
+select{
+    width: 70px;
+    height: 30px;
+    border-radius: 3px;
+    font-size:15px;
+    padding-left: 5px;
+    font-weight: bold;
+    border: 1px solid black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+.mainBox{
+    width : 818px;
+    height : 385px;
+    border:solid rgb(0,0,0);
+    margin-top:15%;
+    margin-left:20%;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 8px;
+  
+}
+.box1{
+       width: 266px;
+       height:350px;
+       border:none;
+       float:left;
+}
+.box2{
+    width: 266px;
+    height:350px;
+    border:none;
+    float:left;
+   
+}
+.box3{
+    width: 266px;
+    height:362px;
+    border:none;
+    border-radius: 10px;
+    float:right; 
+
+    background-color: rgb(203, 216, 205);
+    padding: 3px;
+}
+.box3 .fd{
+    color: #000;
+    font-size: 25px;
+}
+.box3 .b{
+    color: #000;
+    font-size: 18px;
+}
+
+.box2 .b{
+    color: #000;
+    font-size: 18px;
+}
+
+.img{
+    position: relative;
+    width: 265px;
+    height:296px;
+    padding-bottom: 40px;
+    /* bottom: 0px; */
+    top: 20%;
+    background-color: white;
+    border-radius: 10px;
+    /* filter: drop-shadow(1px 1px 5px #000000); */
+}
+.img:hover{
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.box1:hover{
+    border-color: green;
+    background-size: contain;
+    transition: 0.5s linear;
+}
+.box2-content{
+    font-size: 16px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.qty-img{
+    width: 55px;
+    height:70px;
+    border: none;
+    border-radius: 13px;
+    background: none;
+}
+.qty-img:hover{
+    color: green;
+    cursor: pointer;
+}
+input{
+    font-weight: bold;
+    border-radius:7px;
+    margin-left: 5px;
+    height: 28px;
+    width:150px;
+    margin-left: 20px;
+    padding: 5px;
+}
+.btn1{
+    width:100px;
+    height:65px;
+    border-radius: 12px;
+    background-color: rgb(87, 150, 101);
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top:20px;
+    border-color: transparent;
+    box-shadow: 0 0 10PX rgba(0,0,0,0.556);
+}
+.btn1:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.btn2{
+    width:100px;
+    height:65px;
+    border-radius: 12px;
+    background-color: rgb(87, 150, 101);
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left:40px;
+    margin-top:20px;
+    border-color: transparent;
+    box-shadow: 0 0 10PX rgba(0,0,0,0.556);
+}
+.btn2:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.pname{
+    position: absolute;
+    top: 45%;
+    left: 600px;
+    font-size: 40px;
+    color: #000;
+}
+.delivery{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    margin-top:20px;
+    margin-left: 20px;
+}
+.del-logo{
+    width:80px;
+    height:60px;
+    border: none;
+}
+.loc{
+    margin-top:20px;
+    margin-left: 16px;
+    padding: 14px;
+}
+h3{
+    margin-left: 70px;
+    margin-top: 15px;
+    color:rgb(7, 70, 3);
+    text-decoration: underline;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.name {
+    color:white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: small;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+.phn{
+    color:white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: small;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.touch{
+    color: orange;
+    font-size: medium;
+    margin-top: 17px;
+    margin-left: 50px;
+}
+.profile-btn{
+    background-color: rgb(87, 150, 101);
+    border-radius: 13px;
+    margin-top: 20px;
+    height: 34px;
+    width: 130px;
+    border: none;
+    font-weight: bold;
+    margin-left: 70px;
+    box-shadow: 0 0 10PX rgba(0,0,0,0.556);
+}
+.profile-btn:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.qry{
+    color: orange;
+    font-size: medium;
+    margin-top: 17px;
+    margin-left: 70px;
+}
+.chat-btn{
+    margin-top: 17px;
+    margin-left: 70px;
+    background-color: rgb(87, 150, 101);
+    border-radius: 13px;
+    width: 130px;
+    height: 34px;
+    font-weight: bold;
+    border: none;
+    border-radius: 13px;
+    box-shadow: 0 0 10PX rgba(0,0,0,0.556);
+}
+.chat-btn:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+body{
+    background-color: white;
+}
+.link{
+    text-decoration: none;
+    background-color: rgb(87, 150, 101);
+    border-radius: 13px;
+    height: 34px;
+    width: 130px;
+    border: none;
+    font-weight: bold;
+    color: black;
+}
+.link:hover{
+    background-color: rgb(87, 150, 101);
+    cursor: pointer;
+    color:white;
+}
+.lis{
+    margin-top: 50px;
+    margin-left: 100px; 
+}
+select{
+    width: 70px;
+    height: 30px;
+    border-radius: 3px;
+    font-size:15px;
+    padding-left: 5px;
+    font-weight: bold;
+    border: 1px solid black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

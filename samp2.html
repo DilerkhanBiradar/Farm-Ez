@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar Example</title>
+
+    <!-- Add Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        /* Add some basic styling for better presentation */
+        #searchResults {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        /* Style the microphone icon */
+        .microphone-icon {
+            cursor: pointer;
+            color: #007BFF; /* Set the color as needed */
+        }
+
+        /* Style for the modal */
+        #voiceModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color:transparent;
+            box-shadow: 0 0 10px rgba(225, 220, 220, 0.1);
+            z-index: 1000;
+            border-radius: 10px;
+        }
+
+        /* Animation for hearing tunes */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .hearing-tunes {
+            animation: pulse 1s infinite;
+            font-size: 24px;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #718f7e, #4a7b67);
+            border-radius: 10px;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Search Bar Example</h1>
+
+    <!-- Search Bar -->
+    <form id="searchForm" onsubmit="openResult(); return false;">
+        <input type="text" id="searchInput" name="q" placeholder="Search..." oninput="search()">
+        <!-- Microphone Icon -->
+        <i class="fas fa-microphone microphone-icon" onclick="startVoiceRecognition()"></i>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display Search Results -->
+    <div id="searchResults">
+        <!-- Search results will be displayed here -->
+    </div>
+
+    <!-- Voice Modal -->
+    <div id="voiceModal">
+        <div class="hearing-tunes"><i style='font-size:24px' class='fas'>&#xf3c9;</i>  Listening...</div>
+    </div>
+
+    <!-- Add Font Awesome CDN script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+    <script>
+        var recognition; // Declare the recognition object globally
+        var listeningTimer; // Timer for automatic stop after 2 seconds of pause
+
+        function search() {
+            // Get the search query from the input field
+            var query = document.getElementById("searchInput").value;
+
+            // Get the container where search results will be displayed
+            var resultsContainer = document.getElementById("searchResults");
+
+            // Clear previous search results
+            resultsContainer.innerHTML = "";
+
+            // Perform the search only if the query is not empty
+            if (query.trim() !== "") {
+                // Simulate an AJAX request (replace this with your actual AJAX call)
+                // For demonstration purposes, we'll just create a link to the HTML file
+                var resultLink = document.createElement("a");
+                resultLink.href = query.toLowerCase() + ".html"; // Assuming the HTML file is named based on the search query
+                resultLink.textContent = "Open " + query + ".html";
+
+                // Display the link to the HTML file
+                resultsContainer.appendChild(resultLink);
+            }
+        }
+
+        function openResult() {
+            // Get the search query from the input field
+            var query = document.getElementById("searchInput").value;
+
+            // Open the HTML file based on the search query
+            window.location.href = query.toLowerCase() + ".html";
+        }
+
+        function startVoiceRecognition() {
+            // Show the voice modal
+            var voiceModal = document.getElementById('voiceModal');
+            voiceModal.style.display = 'block';
+
+            // Initialize the SpeechRecognition object
+            recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+
+            // Set the language for recognition
+            recognition.lang = 'en-US';
+
+            // Start recognition
+            recognition.start();
+
+            // Event handler for when speech is recognized
+            recognition.onresult = function (event) {
+                var voiceQuery = event.results[0][0].transcript;
+
+                // Set the voice recognition result to the search input
+                document.getElementById("searchInput").value = voiceQuery;
+
+                // Reset the listening timer
+                clearTimeout(listeningTimer);
+                // Start the listening timer again
+                listeningTimer = setTimeout(stopVoiceRecognition, 2000);
+
+                // Trigger the search function
+                search();
+            };
+
+            // Event handler for errors
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error);
+            };
+
+            // Event handler for when recognition is ended
+            recognition.onend = function () {
+                console.log('Speech recognition ended.');
+            };
+        }
+
+        function stopVoiceRecognition() {
+            // Stop recognition
+            if (recognition) {
+                recognition.stop();
+            }
+
+            // Hide the voice modal
+            var voiceModal = document.getElementById('voiceModal');
+            voiceModal.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

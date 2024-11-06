@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Search</title>
+
+    <!-- Add Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        /* Add some basic styling for better presentation */
+        #searchResults {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+        }
+
+        .search-suggestion {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .search-suggestion:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Style the microphone icon */
+        .microphone-icon {
+            cursor: pointer;
+            color: #007BFF; /* Set the color as needed */
+        }
+
+        /* Style for the modal */
+        .listening-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: linear-gradient(45deg, #5a9d76, #044229);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            color: white;
+            animation: pulse 1s infinite;
+        }
+
+        /* Animation for hearing tunes */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Voice Search Example</h1>
+
+    <!-- Search Bar -->
+    <form id="searchForm" onsubmit="openResult(); return false;">
+        <input type="text" id="searchInput" name="q" placeholder="Search..." oninput="search()">
+        <!-- Microphone Icon -->
+        <i class="fas fa-microphone microphone-icon" onclick="startVoiceRecognition()"></i>
+        <button type="submit">Search</button>
+        <!-- Display Search Suggestions -->
+        <div id="searchResults"></div>
+    </form>
+
+    <!-- Listening Popup -->
+    <div class="listening-popup" id="listeningPopup">
+        Listening...
+    </div>
+
+    <!-- Add Font Awesome CDN script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+    <script>
+        var recognition; // Declare the recognition object globally
+        var listeningTimer; // Timer for automatic stop after 2 seconds of pause
+
+        function search() {
+            // Get the search query from the input field
+            var query = document.getElementById("searchInput").value.toLowerCase();
+
+            // Get the container where search suggestions will be displayed
+            var resultsContainer = document.getElementById("searchResults");
+
+            // Clear previous search suggestions
+            resultsContainer.innerHTML = "";
+
+            // Simulate an AJAX request (replace this with your actual AJAX call)
+            // For demonstration purposes, we'll use a static list of suggestions
+            var suggestions = ["test.html", "tutorial.html", "sample.html", "example.html"];
+
+            // Filter suggestions based on the search query
+            var filteredSuggestions = suggestions.filter(function(suggestion) {
+                return suggestion.toLowerCase().startsWith(query);
+            });
+
+            // Display the filtered suggestions in a dropdown menu
+            filteredSuggestions.forEach(function(suggestion) {
+                var resultLink = document.createElement("div");
+                resultLink.className = "search-suggestion";
+                resultLink.textContent = suggestion;
+                resultLink.onclick = function() {
+                    document.getElementById("searchInput").value = suggestion;
+                    resultsContainer.innerHTML = ""; // Clear suggestions after selecting
+                    openResult();
+                };
+                resultsContainer.appendChild(resultLink);
+            });
+        }
+
+        function openResult() {
+            // Get the search query from the input field
+            var query = document.getElementById("searchInput").value;
+
+            // Open the HTML file based on the search query
+            window.location.href = query.toLowerCase() + ".html";
+        }
+
+        function startVoiceRecognition() {
+            // Show the listening popup
+            var listeningPopup = document.getElementById('listeningPopup');
+            listeningPopup.style.display = 'block';
+
+            // Initialize the SpeechRecognition object
+            recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+
+            // Set the language for recognition
+            recognition.lang = 'en-US';
+
+            // Continuous recognition for better accuracy
+            recognition.continuous = true;
+
+            // Start recognition
+            recognition.start();
+
+            // Event handler for when speech is recognized
+            recognition.onresult = function (event) {
+                var voiceQuery = event.results[event.results.length - 1][0].transcript;
+
+                // Set the voice recognition result to the search input
+                document.getElementById("searchInput").value = voiceQuery;
+
+                // Reset the listening timer
+                clearTimeout(listeningTimer);
+                // Start the listening timer again
+                listeningTimer = setTimeout(stopVoiceRecognition, 2000);
+
+                // Trigger the search function
+                search();
+            };
+
+            // Event handler for errors
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error);
+            };
+
+            // Event handler for when recognition is ended
+            recognition.onend = function () {
+                console.log('Speech recognition ended.');
+                // Hide the listening popup
+                listeningPopup.style.display = 'none';
+            };
+        }
+
+        function stopVoiceRecognition() {
+            // Stop recognition
+            if (recognition) {
+                recognition.stop();
+            }
+        }
+    </script>
+
+</body>
+</html>
